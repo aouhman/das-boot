@@ -6,9 +6,12 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import static org.mockito.Mockito.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class ShipwreckControllerTest {
     @InjectMocks
@@ -28,6 +31,7 @@ public class ShipwreckControllerTest {
         when(shipwreckRepository.findOne(1l)).thenReturn(sw);
 
         Shipwreck wreck = sc.get(1L);
-        assertEquals(1l,wreck.getId().longValue());
+//        assertEquals(1l,wreck.getId().longValue());
+          assertThat(wreck.getId(),is(1l));
     }
 }
